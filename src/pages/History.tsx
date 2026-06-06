@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { useMoodStore } from '../store/moodStore';
 import { MOOD_SCALE } from '../constants/moods';
 
@@ -142,7 +142,7 @@ export default function History() {
               <XAxis dataKey="date" tick={{ fontSize: 10 }} />
               <YAxis domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} tick={{ fontSize: 10 }} />
               <Tooltip
-                formatter={(value: any) => [MOOD_SCALE.find((m) => m.score === value)?.en || value, 'Mood']}
+                formatter={(value: any) => [MOOD_SCALE.find((m) => m.score === (value as number))?.en || value, 'Mood']}
                 contentStyle={{ borderRadius: '8px', fontSize: '12px' }}
               />
               <Bar dataKey="mood" radius={[4, 4, 0, 0]}>

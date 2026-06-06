@@ -77,7 +77,6 @@ export default function Journal() {
             onChange={(e) => setContent(e.target.value)}
             placeholder="Apne thoughts yahan likho... (Write your thoughts here...)"
             className="w-full h-48 px-4 py-3 rounded-xl bg-white/50 border border-sand-200 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-400 leading-relaxed"
-            autoFocus
             maxLength={2000}
           />
 

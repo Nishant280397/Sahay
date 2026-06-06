@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Globe, Trash2, Shield, ChevronLeft, Bell, BookOpen } from 'lucide-react';
+import { Moon, Sun, Globe, Trash2, Shield, ChevronLeft, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useUserStore } from '../store/userStore';
 import { useUIStore } from '../store/uiStore';

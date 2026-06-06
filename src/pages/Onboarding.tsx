@@ -141,7 +141,6 @@ export default function Onboarding() {
                     className="w-full bg-surface-container-lowest border-0 px-4 pt-6 pb-4 font-title-md text-title-md text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 transition-all shadow-[0_2px_8px_rgba(0,0,0,0.02)] rounded-t-xl text-center"
                     placeholder="Apna naam likhiye..."
                     autoComplete="off"
-                    autoFocus
                   />
                   <div className="absolute bottom-0 left-0 w-full h-[2px] bg-outline-variant"></div>
                   <div className="ledger-line absolute bottom-0 left-0 w-full h-[2px] bg-outline-variant transform scale-x-0 transition-transform duration-300 ease-out origin-center"></div>

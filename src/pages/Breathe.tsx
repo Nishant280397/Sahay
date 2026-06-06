@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Play, Pause, RotateCcw, ChevronLeft, Volume2 } from 'lucide-react';
 import { BREATHING_PATTERNS, type BreathingPattern } from '../constants/breathingPatterns';
 
@@ -20,9 +20,7 @@ export default function Breathe() {
   const [selectedSound, setSelectedSound] = useState(SOUNDS[0]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const reducedMotion = useRef(
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  );
+  const shouldReduceMotion = useReducedMotion();
 
   const currentPhase = selectedPattern ? selectedPattern.phases[currentPhaseIndex] : null;
 
@@ -59,6 +57,7 @@ export default function Breathe() {
     if (!isPlaying || !selectedPattern) return;
 
     const phase = selectedPattern.phases[currentPhaseIndex];
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCountdown(phase.duration);
 
     timerRef.current = setInterval(() => {
@@ -142,7 +141,7 @@ export default function Breathe() {
           className="breathing-circle"
           style={{ background: `linear-gradient(135deg, ${selectedPattern.color}30, ${selectedPattern.color}10)` }}
           animate={
-            isPlaying && !reducedMotion.current
+            isPlaying && !shouldReduceMotion
               ? { scale: circleScale, opacity: [0.7, 1, 0.7] }
               : { scale: 1 }
           }
@@ -265,7 +264,9 @@ export default function Breathe() {
         )}
       </div>
 
-      <audio ref={audioRef} src={selectedSound.url} loop />
+      <audio ref={audioRef} src={selectedSound.url} loop>
+        <track kind="captions" />
+      </audio>
     </div>
   );
 }

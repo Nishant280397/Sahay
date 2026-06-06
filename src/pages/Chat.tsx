@@ -127,7 +127,7 @@ export default function Chat() {
               </a>
             </div>
           </div>
-          <button onClick={() => setShowCrisisBanner(false)} className="text-ink-400 hover:text-ink-600 text-xs">✕</button>
+          <button aria-label="Close crisis banner" onClick={() => setShowCrisisBanner(false)} className="text-ink-400 hover:text-ink-600 text-xs">✕</button>
         </motion.div>
       )}
 
